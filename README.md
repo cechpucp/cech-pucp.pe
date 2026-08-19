@@ -1,2 +1,2 @@
 # CECH-PUCP.pe
-Pagina web CECH
+Pagina web CECH xd
