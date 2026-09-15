@@ -68,11 +68,6 @@
 
   "fechas_importantes": [
     {
-      "titulo": "Cierre Fase 1 — Fundamentos",
-      "fecha": "2026-09-18",
-      "descripcion": "Cierre del primer bloque de trabajo del semestre."
-    },
-    {
       "titulo": "Inicio Fase 2 — Instrumentos financieros",
       "fecha": "2026-09-19",
       "descripcion": "Arranca el bloque dedicado a los instrumentos financieros chinos."
@@ -81,6 +76,11 @@
       "titulo": "Cierre Fase 2 / Inicio Fase 3",
       "fecha": "2026-10-16",
       "descripcion": "Transición hacia los estudios de caso de América Latina."
+    },
+    {
+      "titulo": "Evento Derecho - Qiu Ju, una mujer china",
+      "fecha": "2026-09-24",
+      "descripcion": "Proyección y análisis de película. https://confucio.pucp.edu.pe/actividades/proyeccion-de-pelicula/"
     },
     {
       "titulo": "Cierre Fase 3 / Inicio Fase 4",
