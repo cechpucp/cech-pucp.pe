@@ -352,7 +352,7 @@
                     renderAcuerdos(data.acuerdos || []);
                     renderCalendario(data.fechas_importantes || []);
                     renderArchivos(data.archivos || []);
-
+ 
                     document.querySelectorAll(".filter-btn").forEach(btn => {
                         btn.addEventListener("click", () => {
                             document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
