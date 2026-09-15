@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="Dashboard interno del CECH: progreso de proyectos, acuerdos, tareas, calendario y archivos.">
+        <title>Actividades — CECH</title>
+        <link href="../assets/images/CECH-ICON.png" rel="icon">
+        <link rel="stylesheet" href="../assets/css/styles.css">
+        <style>
+            /* MÓDULO DE ACTIVIDADES — dashboard interno, sobre las variables de styles.css */
+            .modulo-page{background:var(--paper)}
+            .page-hero.dashboard{min-height:230px}
+            .page-hero.dashboard .page-hero-content{padding:56px 0 40px}
+            .page-hero.dashboard h1{font-size:clamp(36px,4.6vw,54px)}
+
+            .dash-section{padding:56px 0}
+            .dash-section.top{padding-top:44px}
+
+            /* KPIs */
+            .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+            .kpi-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 8px 24px rgba(44,22,18,.05)}
+            .kpi-value{font:500 32px/1 Georgia,"Times New Roman",serif;color:var(--wine)}
+            .kpi-label{font-size:11px;text-transform:uppercase;letter-spacing:.09em;font-weight:800;color:var(--muted);margin-top:8px}
+
+            /* LAYOUT */
+            .dashboard-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;align-items:start}
+            .panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:0 8px 24px rgba(44,22,18,.05)}
+            .panel + .panel{margin-top:22px}
+            .panel-title{font:500 21px/1.2 Georgia,"Times New Roman",serif;margin:0 0 3px}
+            .panel-sub{font-size:12px;color:var(--muted);margin:0 0 22px}
+
+            /* PROYECTOS */
+            .project-item + .project-item{margin-top:22px;padding-top:22px;border-top:1px solid var(--line)}
+            .project-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:4px}
+            .project-name{font:500 16px/1.3 Georgia,"Times New Roman",serif}
+            .project-phase{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+            .progress-row{display:flex;align-items:center;gap:12px}
+            .progress-track{flex:1;height:8px;background:var(--paper-2);border-radius:999px;overflow:hidden}
+            .progress-fill{height:100%;background:linear-gradient(90deg,var(--wine),var(--gold));border-radius:999px}
+            .progress-pct{font-size:12px;font-weight:800;color:var(--wine);width:38px;text-align:right}
+            .project-due{font-size:11px;color:var(--muted);margin-top:8px}
+
+            /* TAREAS */
+            .filter-bar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:20px}
+            .filter-btn{border:1px solid #cdbeb5;background:#fff;color:var(--muted);border-radius:999px;padding:8px 15px;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;font-weight:800;cursor:pointer;transition:.15s}
+            .filter-btn:hover{border-color:var(--wine);color:var(--wine)}
+            .filter-btn.active{background:var(--wine);border-color:var(--wine);color:#fff}
+            .task-row{display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid var(--line)}
+            .task-row:last-child{border-bottom:0;padding-bottom:0}
+            .task-avatar{width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center;background:linear-gradient(145deg,#e7d5bd,#c7a25b);color:var(--wine);font:500 14px Georgia,"Times New Roman",serif}
+            .task-body{flex:1;min-width:0}
+            .task-title{font-size:14px;font-weight:600}
+            .task-meta{font-size:11px;color:var(--muted);margin-top:2px}
+            .task-status{display:inline-flex;align-items:center;gap:6px;font-size:9.5px;text-transform:uppercase;letter-spacing:.07em;font-weight:850;white-space:nowrap;padding:6px 12px;border-radius:999px;flex:none}
+            .task-status:before{content:"";width:6px;height:6px;border-radius:50%}
+            .task-status.pendiente{background:#f7ecd6;color:#8a6a1f}
+            .task-status.pendiente:before{background:var(--gold)}
+            .task-status.completada{background:#e2edee;color:var(--petrol)}
+            .task-status.completada:before{background:var(--petrol)}
+
+            /* ACUERDOS */
+            .agreement-item + .agreement-item{margin-top:20px;padding-top:20px;border-top:1px solid var(--line)}
+            .agreement-date{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;font-weight:850;color:var(--wine)}
+            .agreement-title{font:500 17px/1.3 Georgia,"Times New Roman",serif;margin:6px 0 10px}
+            .agreement-points{margin:0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.6}
+            .agreement-points li{margin-bottom:4px}
+
+            /* SIDEBAR: CALENDARIO */
+            .cal-item{display:flex;gap:13px;padding:12px 0;border-bottom:1px solid var(--line)}
+            .cal-item:last-child{border-bottom:0;padding-bottom:0}
+            .cal-chip{width:46px;height:46px;border-radius:12px;background:var(--paper);flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center}
+            .cal-chip .d{font:500 17px/1 Georgia,"Times New Roman",serif;color:var(--wine)}
+            .cal-chip .m{font-size:8.5px;text-transform:uppercase;letter-spacing:.06em;font-weight:800;color:var(--muted);margin-top:2px}
+            .cal-body h4{font:500 13.5px/1.3 Georgia,"Times New Roman",serif;margin:0 0 3px}
+            .cal-body p{font-size:11px;color:var(--muted);margin:0}
+
+            /* SIDEBAR: ARCHIVOS */
+            .file-item{display:flex;align-items:center;gap:13px;padding:12px 0;border-bottom:1px solid var(--line)}
+            .file-item:last-child{border-bottom:0;padding-bottom:0}
+            .file-icon{width:38px;height:38px;border-radius:10px;background:var(--paper);flex:none;display:grid;place-items:center;font-size:9px;font-weight:850;color:var(--wine);letter-spacing:.02em}
+            .file-body{flex:1;min-width:0}
+            .file-name{font-size:13px;font-weight:600;line-height:1.3}
+            .file-meta{font-size:10.5px;color:var(--muted);margin-top:2px}
+            .file-link{font-size:11px;font-weight:800;color:var(--wine);white-space:nowrap}
+            .file-link:hover{text-decoration:underline}
+
+            .empty-note{color:var(--muted);font-size:13px;padding:6px 0}
+            .updated-note{font-size:11px;color:var(--muted);margin:-10px 0 24px}
+
+            @media(max-width:1000px){
+                .kpi-row{grid-template-columns:1fr 1fr}
+                .dashboard-grid{grid-template-columns:1fr}
+            }
+            @media(max-width:680px){
+                .kpi-row{grid-template-columns:1fr 1fr}
+                .panel{padding:22px}
+                .task-row{flex-wrap:wrap}
+                .task-status{margin-left:52px}
+            }
+        </style>
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="container nav">
+                <a class="brand" href="../">
+                    <img src="../assets/images/Logo-CECH-main.png" alt="Logo CECH">
+                    <div class="brand-name">
+                        Círculos de<br>Estudios Chinos<small>Propuesta de sitio institucional</small>
+                    </div>
+                </a>
+                <button class="menu-btn" aria-label="Abrir menú">☰</button>
+                <nav class="navlinks">
+                    <a href="../" class="">Inicio</a>
+                    <a href="../#nosotros" class="">Nosotros</a>
+                    <a href="../publicaciones/" class="">Publicaciones</a>
+                    <a href="../convocatorias/" class="">Convocatorias</a>
+                    <a href="../modulo/" class="active">Actividades</a>
+                    <a href="../equipo/" class="">Equipo</a>
+                    <a href="../creditos/" class="">Créditos</a>
+                </nav>
+            </div>
+        </header>
+        <main class="modulo-page">
+            <section class="page-hero dashboard">
+                <img class="backdrop" src="../assets/images/beijing-guomao-cbd.png" alt="Distrito financiero de Beijing (Guomao)">
+                <div class="container page-hero-content">
+                    <div class="kicker">Seguimiento interno</div>
+                    <h1>Actividades del CECH.</h1>
+                    <p>Progreso de proyectos, acuerdos de sesión, tareas por miembro, calendario y archivos pendientes de revisión.</p>
+                </div>
+                <div class="page-credit">Yli584 · Wikimedia Commons · CC0</div>
+            </section>
+
+            <section class="dash-section top">
+                <div class="container">
+                    <div class="kpi-row" id="kpi-row"></div>
+                </div>
+            </section>
+
+            <section class="dash-section" style="padding-top:0">
+                <div class="container">
+                    <div class="dashboard-grid">
+                        <div>
+                            <div class="panel" id="panel-proyectos">
+                                <h2 class="panel-title">Progreso de proyectos</h2>
+                                <p class="panel-sub">Avance del informe conjunto por fase.</p>
+                                <div id="projects-list"></div>
+                            </div>
+
+                            <div class="panel" id="panel-tareas">
+                                <h2 class="panel-title">Tareas</h2>
+                                <p class="panel-sub" id="updated-note"></p>
+                                <div class="filter-bar">
+                                    <button class="filter-btn active" data-filter="todas">Todas</button>
+                                    <button class="filter-btn" data-filter="pendiente">Pendientes</button>
+                                    <button class="filter-btn" data-filter="completada">Completadas</button>
+                                </div>
+                                <div id="task-list"></div>
+                            </div>
+
+                            <div class="panel" id="panel-acuerdos">
+                                <h2 class="panel-title">Acuerdos de sesión</h2>
+                                <p class="panel-sub">Resumen de lo decidido en las últimas reuniones.</p>
+                                <div id="agreements-list"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="panel" id="panel-calendario">
+                                <h2 class="panel-title">Calendario</h2>
+                                <p class="panel-sub">Próximas fechas clave.</p>
+                                <div id="cal-list"></div>
+                            </div>
+
+                            <div class="panel" id="panel-archivos">
+                                <h2 class="panel-title">Archivos pendientes</h2>
+                                <p class="panel-sub">Convocatorias y documentos por revisar.</p>
+                                <div id="files-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-top">
+                    <div class="footer-brand">
+                        <img src="../assets/images/Logo-CECH-main.png" alt="">
+                        <div><b>Círculos de Estudios Chinos</b><br>
+                            <span>Prototipo navegable by A. Canahualpa · 2026</span>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <a href="../publicaciones/">Publicaciones</a>
+                        <a href="../convocatorias/">Convocatorias</a>
+                        <a href="../modulo/">Actividades</a>
+                        <a href="../equipo/">Equipo</a>
+                        <a href="../creditos">Créditos visuales</a>
+                    </div>
+                </div>
+                <div class="footer-credit-note">
+                    <span>Las imágenes del prototipo conservan su atribución y licencia de origen. No eliminar los créditos al publicar el sitio.</span>
+                    <span><a href="../creditos/">Ver fuentes y licencias →</a></span>
+                </div>
+            </div>
+        </footer>
+        <script src="../assets/js/main.js"></script>
+        <script>
+            const MESES_CORTO = ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+            const MESES_LARGO = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+
+            function partesFecha(iso){
+                const [y,m,d] = iso.split("-").map(Number);
+                return {y,m,d};
+            }
+            function fechaCorta(iso){
+                const {m,d,y} = partesFecha(iso);
+                return { dia:d, mes:MESES_CORTO[m-1], anio:y };
+            }
+            function fechaLarga(iso){
+                const {m,d,y} = partesFecha(iso);
+                return `${d} de ${MESES_LARGO[m-1]} de ${y}`;
+            }
+            function iniciales(texto){
+                return texto.split(" ").filter(Boolean).slice(0,2).map(p=>p[0].toUpperCase()).join("");
+            }
+
+            function renderKpis(data){
+                const tareasPendientes = data.tareas.filter(t=>t.estado==="pendiente").length;
+                const hoy = new Date().toISOString().slice(0,10);
+                const proximasFechas = [...data.fechas_importantes].sort((a,b)=>a.fecha.localeCompare(b.fecha));
+                const proxima = proximasFechas.find(f=>f.fecha >= hoy) || proximasFechas[proximasFechas.length-1];
+
+                const kpis = [
+                    { valor: data.proyectos.length, label: "Proyectos activos" },
+                    { valor: tareasPendientes, label: "Tareas pendientes" },
+                    { valor: proxima ? fechaCorta(proxima.fecha).dia + " " + fechaCorta(proxima.fecha).mes : "—", label: "Próxima fecha clave" },
+                    { valor: data.archivos.length, label: "Archivos por revisar" }
+                ];
+                document.getElementById("kpi-row").innerHTML = kpis.map(k => `
+                    <div class="kpi-card">
+                        <div class="kpi-value">${k.valor}</div>
+                        <div class="kpi-label">${k.label}</div>
+                    </div>
+                `).join("");
+            }
+
+            function renderProyectos(proyectos){
+                document.getElementById("projects-list").innerHTML = proyectos.map(p => `
+                    <div class="project-item">
+                        <div class="project-head">
+                            <span class="project-name">${p.nombre}</span>
+                        </div>
+                        <div class="project-phase">${p.fase_actual}</div>
+                        <div class="progress-row">
+                            <div class="progress-track"><div class="progress-fill" style="width:${p.progreso}%"></div></div>
+                            <span class="progress-pct">${p.progreso}%</span>
+                        </div>
+                        <div class="project-due">Entrega: ${fechaLarga(p.fecha_entrega)}</div>
+                    </div>
+                `).join("");
+            }
+
+            function renderTareas(tareas, filtro){
+                const list = document.getElementById("task-list");
+                const filtradas = filtro === "todas" ? tareas : tareas.filter(t => t.estado === filtro);
+                if(!filtradas.length){
+                    list.innerHTML = `<p class="empty-note">No hay tareas en este estado por ahora.</p>`;
+                    return;
+                }
+                list.innerHTML = filtradas.map(t => `
+                    <div class="task-row">
+                        <div class="task-avatar">${iniciales(t.responsable)}</div>
+                        <div class="task-body">
+                            <div class="task-title">${t.titulo}</div>
+                            <div class="task-meta">${t.responsable} · ${fechaLarga(t.fecha)}</div>
+                        </div>
+                        <span class="task-status ${t.estado}">${t.estado === "completada" ? "Completada" : "Pendiente"}</span>
+                    </div>
+                `).join("");
+            }
+
+            function renderAcuerdos(acuerdos){
+                const list = document.getElementById("agreements-list");
+                if(!acuerdos.length){
+                    list.innerHTML = `<p class="empty-note">Todavía no hay acuerdos registrados.</p>`;
+                    return;
+                }
+                list.innerHTML = [...acuerdos].sort((a,b)=>b.fecha.localeCompare(a.fecha)).map(a => `
+                    <div class="agreement-item">
+                        <div class="agreement-date">${fechaLarga(a.fecha)}</div>
+                        <div class="agreement-title">${a.titulo}</div>
+                        <ul class="agreement-points">
+                            ${a.puntos.map(p => `<li>${p}</li>`).join("")}
+                        </ul>
+                    </div>
+                `).join("");
+            }
+
+            function renderCalendario(fechas){
+                document.getElementById("cal-list").innerHTML = [...fechas].sort((a,b)=>a.fecha.localeCompare(b.fecha)).map(f => {
+                    const {dia, mes} = fechaCorta(f.fecha);
+                    return `
+                        <div class="cal-item">
+                            <div class="cal-chip"><div class="d">${dia}</div><div class="m">${mes}</div></div>
+                            <div class="cal-body">
+                                <h4>${f.titulo}</h4>
+                                <p>${f.descripcion || ""}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join("");
+            }
+
+            function renderArchivos(archivos){
+                const list = document.getElementById("files-list");
+                if(!archivos.length){
+                    list.innerHTML = `<p class="empty-note">No hay archivos pendientes por ahora.</p>`;
+                    return;
+                }
+                list.innerHTML = archivos.map(a => `
+                    <div class="file-item">
+                        <div class="file-icon">PDF</div>
+                        <div class="file-body">
+                            <div class="file-name">${a.nombre}</div>
+                            <div class="file-meta">${a.tipo} · ${fechaLarga(a.fecha)}</div>
+                        </div>
+                        <a class="file-link" href="${a.url}" target="_blank" rel="noopener">Abrir →</a>
+                    </div>
+                `).join("");
+            }
+
+            fetch("./data.json")
+                .then(r => r.json())
+                .then(data => {
+                    document.getElementById("updated-note").textContent = "Actualizado el " + fechaLarga(data.actualizado) + ". Filtra por estado:";
+                    renderKpis(data);
+                    renderProyectos(data.proyectos || []);
+                    renderTareas(data.tareas || [], "todas");
+                    renderAcuerdos(data.acuerdos || []);
+                    renderCalendario(data.fechas_importantes || []);
+                    renderArchivos(data.archivos || []);
+
+                    document.querySelectorAll(".filter-btn").forEach(btn => {
+                        btn.addEventListener("click", () => {
+                            document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+                            btn.classList.add("active");
+                            renderTareas(data.tareas || [], btn.dataset.filter);
+                        });
+                    });
+                })
+                .catch(() => {
+                    document.getElementById("task-list").innerHTML =
+                        `<p class="empty-note">No se pudo cargar data.json. Revisa que el archivo esté en la misma carpeta.</p>`;
+                });
+        </script>
+    </body>
+</html>

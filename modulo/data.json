@@ -1,0 +1,99 @@
+{
+  "actualizado": "2026-09-15",
+
+  "proyectos": [
+    {
+      "nombre": "Informe conjunto: poder financiero de China en América Latina",
+      "fase_actual": "Fase 2 — Instrumentos financieros",
+      "progreso": 30,
+      "fecha_entrega": "2026-12-11"
+    }
+  ],
+
+  "tareas": [
+    {
+      "id": 1,
+      "titulo": "Confirmar disponibilidad de los miembros",
+      "responsable": "Coordinación general",
+      "fecha": "2026-09-18",
+      "estado": "pendiente"
+    },
+    {
+      "id": 2,
+      "titulo": "Asignar miembros a subgrupos A–E",
+      "responsable": "Coordinación general",
+      "fecha": "2026-09-18",
+      "estado": "pendiente"
+    },
+    {
+      "id": 3,
+      "titulo": "Definir editor(a) de integración",
+      "responsable": "Coordinación general",
+      "fecha": "2026-09-18",
+      "estado": "pendiente"
+    },
+    {
+      "id": 4,
+      "titulo": "Conformar Subgrupo E (geopolítica y síntesis)",
+      "responsable": "Coordinación general",
+      "fecha": "2026-09-18",
+      "estado": "pendiente"
+    },
+    {
+      "id": 5,
+      "titulo": "Redactar plan de trabajo del segundo semestre",
+      "responsable": "Coordinación general",
+      "fecha": "2026-08-22",
+      "estado": "completada"
+    }
+  ],
+
+  "acuerdos": [
+    {
+      "fecha": "2026-08-22",
+      "titulo": "Sesión de arranque del segundo semestre",
+      "puntos": [
+        "Se aprobó el plan de trabajo en cuatro fases con fechas fijas.",
+        "Se definieron cinco subgrupos temáticos (A–E) de composición mixta.",
+        "Queda pendiente confirmar la disponibilidad de cada miembro."
+      ]
+    }
+  ],
+
+  "fechas_importantes": [
+    {
+      "titulo": "Cierre Fase 1 — Fundamentos",
+      "fecha": "2026-09-18",
+      "descripcion": "Cierre del primer bloque de trabajo del semestre."
+    },
+    {
+      "titulo": "Inicio Fase 2 — Instrumentos financieros",
+      "fecha": "2026-09-19",
+      "descripcion": "Arranca el bloque dedicado a los instrumentos financieros chinos."
+    },
+    {
+      "titulo": "Cierre Fase 2 / Inicio Fase 3",
+      "fecha": "2026-10-16",
+      "descripcion": "Transición hacia los estudios de caso de América Latina."
+    },
+    {
+      "titulo": "Cierre Fase 3 / Inicio Fase 4",
+      "fecha": "2026-11-20",
+      "descripcion": "Arranca la fase de síntesis e integración final."
+    },
+    {
+      "titulo": "Entrega del informe unificado",
+      "fecha": "2026-12-11",
+      "descripcion": "Cierre del proyecto: informe integrado de las cinco fases."
+    }
+  ],
+
+  "archivos": [
+    {
+      "nombre": "Plan de trabajo — segundo semestre 2026",
+      "tipo": "Documento interno",
+      "fecha": "2026-08-22",
+      "url": "../docs/plan-trabajo-segundo-semestre.pdf"
+    }
+  ]
+}
