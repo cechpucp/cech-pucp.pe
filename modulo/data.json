@@ -7,6 +7,12 @@
       "fase_actual": "Fase 2 — Instrumentos financieros",
       "progreso": 30,
       "fecha_entrega": "2026-12-11"
+    },
+    {
+      "nombre": "Boletin CECH Edicion 002",
+      "fase_actual": "Fase 1 — Producción",
+      "progreso": 10,
+      "fecha_entrega": "2026-12-01"
     }
   ],
 
@@ -34,8 +40,8 @@
     },
     {
       "id": 4,
-      "titulo": "Conformar Subgrupo E (geopolítica y síntesis)",
-      "responsable": "Coordinación general",
+      "titulo": "Artículo de Sebastian",
+      "responsable": "Sebastian",
       "fecha": "2026-09-18",
       "estado": "pendiente"
     },
@@ -50,8 +56,8 @@
 
   "acuerdos": [
     {
-      "fecha": "2026-08-22",
-      "titulo": "Sesión de arranque del segundo semestre",
+      "fecha": "2026-09-05",
+      "titulo": "Segunda sesión - 2026-II",
       "puntos": [
         "Se aprobó el plan de trabajo en cuatro fases con fechas fijas.",
         "Se definieron cinco subgrupos temáticos (A–E) de composición mixta.",
