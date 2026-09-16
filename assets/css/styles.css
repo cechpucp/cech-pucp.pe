@@ -72,7 +72,7 @@ section{padding:86px 0}
 
 /* HOME PUBLISHING HUB */
 .publication-hub{background:#fff;position:relative;overflow:hidden}
-.publication-hub:before{content:"";position:absolute;right:-120px;top:150px;width:430px;height:340px;background:url('../images/relieve-pabellon-han.jpg') center/cover no-repeat;opacity:.035;filter:grayscale(1)}
+.publication-hub:before{content:"";position:absolute;right:-120px;top:150px;width:430px;height:340px;background:url('../images/relieve-pabellon-han.jpg') center/cover no-repeat;opacity:.035;filter:grayscale(1);pointer-events:none}
 .hub-grid{display:grid;grid-template-columns:1.05fr 1fr 1fr;gap:20px;position:relative}
 .hub-card{position:relative;min-height:420px;border-radius:22px;overflow:hidden;color:#fff;box-shadow:var(--shadow-sm);isolation:isolate}
 .hub-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s ease;z-index:-3}
@@ -106,7 +106,7 @@ section{padding:86px 0}
 
 /* CALLS HOME */
 .calls-home{background:#16080a;color:#fff;position:relative;overflow:hidden}
-.calls-home:before{content:"";position:absolute;inset:0;background:url('../images/tintero-caracter-viento.jpg') right 12% center/470px auto no-repeat;opacity:.10;filter:grayscale(1)}
+.calls-home:before{content:"";position:absolute;inset:0;background:url('../images/tintero-caracter-viento.jpg') right 12% center/470px auto no-repeat;opacity:.10;filter:grayscale(1);pointer-events:none}
 .calls-home .kicker{color:var(--gold-light)}
 .calls-home .section-desc{color:#c7b7b2}
 .call-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:20px;position:relative}
