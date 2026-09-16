@@ -195,6 +195,10 @@ section{padding:86px 0}
 .call-list{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .call-box{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:0 8px 28px rgba(44,22,18,.05)}
 .call-box h2{font:500 27px/1.12 Georgia,"Times New Roman",serif;margin:12px 0 10px}.call-box p{color:var(--muted);font-size:13px}.call-box .status{color:var(--wine)}
+.call-box .status{display:inline-flex;align-items:center;gap:8px}
+.call-box .status:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--muted)}
+.call-box .status.is-open:before{background:#2f7a4b}
+.call-box .status.is-closed:before{background:var(--petrol)}
 .info-panel{margin-top:25px;border-radius:20px;background:#fff;border:1px solid var(--line);padding:25px;color:var(--muted);font-size:13px}
 
 /* TEAM */
