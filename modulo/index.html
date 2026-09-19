@@ -66,6 +66,15 @@
             .agreement-points{margin:0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.6}
             .agreement-points li{margin-bottom:4px}
 
+            .agreement-history{margin-top:20px;padding-top:20px;border-top:1px solid var(--line)}
+            .agreement-history summary{cursor:pointer;font-size:11px;text-transform:uppercase;letter-spacing:.07em;font-weight:850;color:var(--wine);list-style:none}
+            .agreement-history summary::-webkit-details-marker{display:none}
+            .agreement-history summary:before{content:"▸";display:inline-block;margin-right:7px;transition:transform .15s}
+            .agreement-history[open] summary:before{transform:rotate(90deg)}
+            .agreement-history-list{margin-top:18px}
+            .agreement-history-list .agreement-item{margin-top:0;padding-top:0;border-top:0}
+            .agreement-history-list .agreement-item + .agreement-item{margin-top:20px;padding-top:20px;border-top:1px solid var(--line)}
+
             /* SIDEBAR: CALENDARIO */
             .cal-item{display:flex;gap:13px;padding:12px 0;border-bottom:1px solid var(--line)}
             .cal-item:last-child{border-bottom:0;padding-bottom:0}
@@ -297,7 +306,10 @@
                     list.innerHTML = `<p class="empty-note">Todavía no hay acuerdos registrados.</p>`;
                     return;
                 }
-                list.innerHTML = [...acuerdos].sort((a,b)=>b.fecha.localeCompare(a.fecha)).map(a => `
+                const ordenados = [...acuerdos].sort((a,b)=>b.fecha.localeCompare(a.fecha));
+                const [actual, ...anteriores] = ordenados;
+
+                const pintarAcuerdo = a => `
                     <div class="agreement-item">
                         <div class="agreement-date">${fechaLarga(a.fecha)}</div>
                         <div class="agreement-title">${a.titulo}</div>
@@ -305,7 +317,22 @@
                             ${a.puntos.map(p => `<li>${p}</li>`).join("")}
                         </ul>
                     </div>
-                `).join("");
+                `;
+
+                let html = pintarAcuerdo(actual);
+
+                if(anteriores.length){
+                    html += `
+                        <details class="agreement-history">
+                            <summary>Ver historial de sesiones anteriores (${anteriores.length})</summary>
+                            <div class="agreement-history-list">
+                                ${anteriores.map(pintarAcuerdo).join("")}
+                            </div>
+                        </details>
+                    `;
+                }
+
+                list.innerHTML = html;
             }
 
             function renderCalendario(fechas){
