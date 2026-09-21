@@ -23,16 +23,9 @@
       "responsable": "Coordinación general",
       "fecha": "2026-09-18",
       "estado": "pendiente"
-    },
+     },
     {
       "id": 2,
-      "titulo": "Asignar miembros a subgrupos A–E",
-      "responsable": "Coordinación general",
-      "fecha": "2026-09-18",
-      "estado": "pendiente"
-    },
-    {
-      "id": 4,
       "titulo": "Boletín 002 - Artículo de Helard",
       "responsable": "Helard",
       "fecha": "2026-09-18",
@@ -46,14 +39,14 @@
       "estado": "pendiente"
     },
     {
-      "id": 5,
+      "id": 4,
       "titulo": "Redactar plan de trabajo del segundo semestre",
       "responsable": "Coordinación general",
       "fecha": "2026-08-22",
       "estado": "completada"
     },
     {
-      "id": 6,
+      "id": 5,
       "titulo": "Propuesta de Evento",
       "responsable": "Luis",
       "fecha": "2026-09-05",
