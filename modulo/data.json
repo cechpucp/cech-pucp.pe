@@ -18,6 +18,13 @@
 
   "tareas": [
     {
+      "id": 6,
+      "titulo": "Confirmar disponibilidad de los miembros",
+      "responsable": "Coordinación general",
+      "fecha": "2026-09-18",
+      "estado": "pendiente"
+     },
+     {
       "id": 1,
       "titulo": "Confirmar disponibilidad de los miembros",
       "responsable": "Coordinación general",
