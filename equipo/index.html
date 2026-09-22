@@ -7,6 +7,17 @@
         <title>Equipo — CECH</title>
         <link href="../assets/images/CECH-ICON.png" rel="icon">
         <link rel="stylesheet" href="../assets/css/styles.css">
+        <style>
+            /* PÁGINA EQUIPO — badge de sección + filtro, sobre las variables de styles.css */
+            .section-badge{position:absolute;top:18px;right:18px;font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;font-weight:850;padding:6px 11px;border-radius:999px}
+            .section-badge.derecho{background:#f3e2df;color:var(--wine)}
+            .section-badge.economia{background:#e2edee;color:var(--petrol)}
+
+            .filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 30px}
+            .filter-btn{border:1px solid #cdbeb5;background:#fff;color:var(--muted);border-radius:999px;padding:9px 17px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:800;cursor:pointer;transition:.15s}
+            .filter-btn:hover{border-color:var(--wine);color:var(--wine)}
+            .filter-btn.active{background:var(--wine);border-color:var(--wine);color:#fff}
+        </style>
     </head>
     <body>
         <header class="site-header">
@@ -56,37 +67,48 @@
                     <p class="team-note">No se inventaron nombres ni cargos. Estas tarjetas muestran únicamente la 
                         estructura propuesta para presentar a las personas encargadas del CECH y a quienes ocupen 
                         cargos relevantes.</p>
+                    <div class="filter-bar">
+                        <button class="filter-btn active" data-filter="todos">Todos</button>
+                        <button class="filter-btn" data-filter="derecho">Sección Derecho</button>
+                        <button class="filter-btn" data-filter="economia">Sección Economía</button>
+                    </div>
                     <div class="team-grid">
-                        <div class="team-card">
+                        <div class="team-card" data-seccion="derecho">
+                            <div class="section-badge derecho">Sec. Derecho</div>
                             <div class="avatar">D</div><div class="role">Dirección</div>
                             <h3>Nombre por completar</h3><p>Breve perfil académico, afiliación institucional, 
                                 líneas de trabajo y correo.</p>
                         </div>
-                        <div class="team-card">
+                        <div class="team-card" data-seccion="economia">
+                            <div class="section-badge economia">Sec. Economía</div>
                             <div class="avatar">C</div>
                             <div class="role">Coordinación</div>
                             <h3>Nombre por completar</h3>
                             <p>Responsabilidades en el CECH, trayectoria y áreas de investigación.</p>
                         </div>
-                        <div class="team-card">
+                        <div class="team-card" data-seccion="economia">
+                            <div class="section-badge economia">Sec. Economía</div>
                             <div class="avatar">I</div>
                             <div class="role">Investigación</div>
                             <h3>Nombre por completar</h3>
                             <p>Perfil de investigador, publicaciones destacadas y temas de especialidad.</p>
                         </div>
-                        <div class="team-card">
+                        <div class="team-card" data-seccion="derecho">
+                            <div class="section-badge derecho">Sec. Derecho</div>
                             <div class="avatar">I</div>
                             <div class="role">Investigación</div>
                             <h3>Nombre por completar</h3>
                             <p>Perfil de investigador, publicaciones destacadas y temas de especialidad.</p>
                         </div>
-                        <div class="team-card">
+                        <div class="team-card" data-seccion="economia">
+                            <div class="section-badge economia">Sec. Economía</div>
                             <div class="avatar">E</div>
                             <div class="role">Edición</div>
                             <h3>Nombre por completar</h3>
                             <p>Participación editorial en boletines, cuadernos o proyectos del CECH.</p>
                         </div>
-                        <div class="team-card">
+                        <div class="team-card" data-seccion="derecho">
+                            <div class="section-badge derecho">Sec. Derecho</div>
                             <div class="avatar">M</div>
                             <div class="role">Miembro</div>
                             <h3>Nombre por completar</h3>
@@ -120,5 +142,17 @@
             </div>
         </footer>
         <script src="../assets/js/main.js"></script>
+        <script>
+            document.querySelectorAll(".filter-bar .filter-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    document.querySelectorAll(".filter-bar .filter-btn").forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+                    const filtro = btn.dataset.filter;
+                    document.querySelectorAll(".team-card").forEach(card => {
+                        card.style.display = (filtro === "todos" || card.dataset.seccion === filtro) ? "" : "none";
+                    });
+                });
+            });
+        </script>
     </body>
 </html>
