@@ -19,9 +19,9 @@
   "tareas": [
     {
       "id": 6,
-      "titulo": "Confirmar disponibilidad de los miembros",
-      "responsable": "Coordinación general",
-      "fecha": "2026-09-18",
+      "titulo": "Draft sobre potencial evento Puerto de Chancay?",
+      "responsable": "Luis",
+      "fecha": "2026-09-12",
       "estado": "pendiente"
      },
      {
@@ -76,8 +76,12 @@
       "titulo": "Segunda sesión_V2 - 2026-II",
       "puntos": [
         "Panel secreto de control de Sec.Economía presentado",
-        "Avance en asignación de ejes",
-        "Ficha borrador (1 página): Eje seleccionadao, título tentativo y pregunta del artículo"
+        "Sesión especial (sábado 26 de septiembre): se realizará de forma presencial con la visita del profesor. Se espera la asistencia de todos los integrantes.",
+        "Objetivo de la visita: aprovechar su presencia para comentarle los temas que cada integrante está desarrollando.",
+        "Confirmación del profesor: ya había confirmado hace unas semanas, pero está pendiente su reconfirmación, ya que la reunión se realiza solo por su visita.",
+        "Fichas borrador: cada integrante presentará ese día su ficha borrador del tema para el dossier, con eje, título tentativo y pregunta.",
+        "Congreso de sinólogos: quienes asistieron compartirán las fotos del evento para armar un post.",
+        "Cronograma para la sesion del sábado"
       ]
     }
   ],
