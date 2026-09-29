@@ -58,6 +58,13 @@
       "responsable": "Ibeeth",
       "fecha": "2026-10-10",
       "estado": "pendiente"
+    },
+    {
+      "id": 7,
+      "titulo": "Viaje a Chancay: Confirmación por correo de la empresa",
+      "responsable": "Juan",
+      "fecha": "2026-10-10",
+      "estado": "pendiente"
     }
   ],
 
