@@ -25,13 +25,6 @@
       "estado": "pendiente"
      },
      {
-      "id": 1,
-      "titulo": "Confirmar disponibilidad de los miembros",
-      "responsable": "Coordinación general",
-      "fecha": "2026-09-18",
-      "estado": "pendiente"
-     },
-    {
       "id": 2,
       "titulo": "Boletín 002 - Artículo de Helard",
       "responsable": "Helard",
@@ -51,6 +44,20 @@
       "responsable": "Coordinación general",
       "fecha": "2026-08-22",
       "estado": "completada"
+    },
+    {
+      "id": 1,
+      "titulo": "Presentación Helard",
+      "responsable": "Helard",
+      "fecha": "2026-10-10",
+      "estado": "pendiente"
+    },
+    {
+      "id": 5,
+      "titulo": "Presentación Ibeeth",
+      "responsable": "Ibeeth",
+      "fecha": "2026-10-10",
+      "estado": "pendiente"
     }
   ],
 
