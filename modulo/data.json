@@ -170,7 +170,7 @@
     },
     {
       "nombre": "Link de Fechas exposición",
-      "tipo": "Link Word",
+      "tipo": "Documento Word",
       "formato": "docx",
       "fecha": "2026-09-29",
       "url": "../docs/Fechas_Avance.docx"
