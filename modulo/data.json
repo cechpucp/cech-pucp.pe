@@ -158,7 +158,6 @@
       "fecha": "2026-09-12",
       "url": "../docs/Proyecto-2026-ii.pdf"
     },
-    
     {
       "nombre": "Convocatoria XuexiClub - Chile",
       "tipo": "Documento interno",
@@ -185,7 +184,14 @@
       "tipo": "Documento Word",
       "formato": "docx",
       "fecha": "2026-09-29",
-      "url": "../docs/Fechas_Avance.docx"
+      "url": "../docs/Fechas_Avance.docxICONF-PUCP-093-2026"
+    },
+    {
+      "nombre": "Documento 1/4 Beca I.Confucio",
+      "tipo": "Documento Word",
+      "formato": "pdf",
+      "fecha": "2026-09-29",
+      "url": "../docs/ICONF-PUCP-093-2026.pdf"
     }
   ]
 }
