@@ -65,6 +65,13 @@
       "responsable": "Juan",
       "fecha": "2026-10-10",
       "estado": "pendiente"
+    },
+    {
+      "id": 8,
+      "titulo": "Plan de Trabajo: Para el Próximo año",
+      "responsable": "Coordinación general",
+      "fecha": "2026-11-14",
+      "estado": "pendiente"
     }
   ],
 
@@ -128,6 +135,11 @@
       "titulo": "EXAMENES PARCIALES 12-17 OCT",
       "fecha": "2026-10-12",
       "descripcion": "Periodo de examenes parciales, no hay reuniones"
+    },
+    {
+      "titulo": "Plan de trabajo 2027",
+      "fecha": "2026-11-14",
+      "descripcion": "Enviar a I.Confucion el plan de trabajo para el próximo año"
     }
   ],
 
