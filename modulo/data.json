@@ -9,10 +9,18 @@
       "fecha_entrega": "2026-12-11",
       "avances": [
     {
-      "integrante": "Ibeeth",
+      "integrante": "Helard",
       "tipo": "Ficha borrador",
       "descripcion": "Eje 1 - título tentativo y pregunta",
       "formato": "docx",
+      "fecha": "2026-10-10",
+      "url": "../docs/Ficha_borrador_Twyford_Kenia_editada.docx"
+    },
+    {
+      "integrante": "Ibeeth",
+      "tipo": "Ficha borrador",
+      "descripcion": "Eje 1 - título tentativo y pregunta",
+      "formato": "pdf",
       "fecha": "2026-10-10",
       "url": "../docs/Presentación CECH.pdf"
     },
