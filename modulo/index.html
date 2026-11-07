@@ -41,6 +41,13 @@
             .progress-pct{font-size:12px;font-weight:800;color:var(--wine);width:38px;text-align:right}
             .project-due{font-size:11px;color:var(--muted);margin-top:8px}
 
+            .project-avances{margin-top:16px}
+            .project-avances summary{cursor:pointer;font-size:11px;text-transform:uppercase;letter-spacing:.07em;font-weight:850;color:var(--wine);list-style:none}
+            .project-avances summary::-webkit-details-marker{display:none}
+            .project-avances summary:before{content:"▸";display:inline-block;margin-right:7px;transition:transform .15s}
+            .project-avances[open] summary:before{transform:rotate(90deg)}
+            .avances-list{margin-top:10px}
+
             /* TAREAS */
             .filter-bar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:20px}
             .filter-btn{border:1px solid #cdbeb5;background:#fff;color:var(--muted);border-radius:999px;padding:8px 15px;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;font-weight:800;cursor:pointer;transition:.15s}
@@ -272,6 +279,22 @@
                 `).join("");
             }
 
+            const ETIQUETAS = { pdf: "PDF", xlsx: "XLSX", docx: "DOCX" };
+
+            function pintarAvance(a){
+                const detalle = [a.tipo, a.descripcion, a.fecha ? fechaLarga(a.fecha) : null].filter(Boolean).join(" · ");
+                return `
+                    <div class="file-item">
+                        <div class="file-icon ${a.formato}">${ETIQUETAS[a.formato] || a.formato.toUpperCase()}</div>
+                        <div class="file-body">
+                            <div class="file-name">${a.integrante}</div>
+                            <div class="file-meta">${detalle}</div>
+                        </div>
+                        <a class="file-link" href="${a.url}" target="_blank" rel="noopener">Abrir →</a>
+                    </div>
+                `;
+            }
+
             function renderProyectos(proyectos){
                 document.getElementById("projects-list").innerHTML = proyectos.map(p => `
                     <div class="project-item">
@@ -284,6 +307,14 @@
                             <span class="progress-pct">${p.progreso}%</span>
                         </div>
                         <div class="project-due">Entrega: ${fechaLarga(p.fecha_entrega)}</div>
+                        ${(p.avances && p.avances.length) ? `
+                            <details class="project-avances">
+                                <summary>Ver avances presentados (${p.avances.length})</summary>
+                                <div class="avances-list">
+                                    ${p.avances.map(pintarAvance).join("")}
+                                </div>
+                            </details>
+                        ` : ""}
                     </div>
                 `).join("");
             }
@@ -363,7 +394,6 @@
                     list.innerHTML = `<p class="empty-note">No hay archivos pendientes por ahora.</p>`;
                     return;
                 }
-                const ETIQUETAS = { pdf: "PDF", xlsx: "XLSX", docx: "DOCX" };
                 list.innerHTML = archivos.map(a => `
                     <div class="file-item">
                         <div class="file-icon ${a.formato}">${ETIQUETAS[a.formato] || a.formato.toUpperCase()}</div>

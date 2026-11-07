@@ -6,7 +6,17 @@
       "nombre": "Informe conjunto: poder financiero de China en América Latina",
       "fase_actual": "Fase 2 — Fijación de temas",
       "progreso": 5,
-      "fecha_entrega": "2026-12-11"
+      "fecha_entrega": "2026-12-11",
+      "avances": [
+    {
+      "integrante": "Helard",
+      "tipo": "Ficha borrador",
+      "descripcion": "Eje 1 - título tentativo y pregunta",
+      "formato": "docx",
+      "fecha": "2026-10-10",
+      "url": "../docs/avance-helard.docx"
+    }
+  ]
     },
     {
       "nombre": "Boletin CECH - Edición 002",
