@@ -9,12 +9,20 @@
       "fecha_entrega": "2026-12-11",
       "avances": [
     {
-      "integrante": "Helard",
+      "integrante": "Ibeeth",
       "tipo": "Ficha borrador",
       "descripcion": "Eje 1 - título tentativo y pregunta",
       "formato": "docx",
       "fecha": "2026-10-10",
-      "url": "../docs/avance-helard.docx"
+      "url": "../docs/Presentación CECH.pdf"
+    },
+    {
+      "integrante": "Willynthom",
+      "tipo": "Ficha borrador",
+      "descripcion": "Eje 1 - título tentativo y pregunta",
+      "formato": "docx",
+      "fecha": "2026-10-10",
+      "url": "../docs/Eje 5 Implicancias estratégicas para el Perú y América Latina.docx"
     }
   ]
     },
