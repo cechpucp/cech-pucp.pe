@@ -46,7 +46,25 @@
       "nombre": "Boletin CECH - Edición 002",
       "fase_actual": "Fase 1 — Producción",
       "progreso": 10,
-      "fecha_entrega": "2026-12-01"
+      "fecha_entrega": "2026-12-01",
+      "avances": [
+    {
+      "integrante": "Helard",
+      "tipo": "Ficha borrador",
+      "descripcion": "Eje 1 - título tentativo y pregunta",
+      "formato": "pdf",
+      "fecha": "2026-10-10",
+      "url": "../docs/Propuesta de boletín_cech.pdf"
+    },
+    {
+      "integrante": "Alex",
+      "tipo": "Ficha borrador",
+      "descripcion": "Eje 1 - título tentativo y pregunta",
+      "formato": "pdf",
+      "fecha": "2026-10-10",
+      "url": "../docs/Biocomercio_Peru_China.pdf"
+    }
+  ]
     }
   ],
 
